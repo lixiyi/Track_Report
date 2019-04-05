@@ -43,7 +43,7 @@ Two steps for Paragraph-Based Background Article Discovery:
 * result merging
 	* `score-order` ---> use the maximum score a document receives among difierent paragraphs to rank the documents.
 	* `vote-order` ----> use the \voting" of the paragraphs. A document that appears in more paragraphs' results is ranked higher.
-	* `ladder-order` --> ranks the top documents for the results of dierent paragraphs based on their scores.
+	* `ladder-order` --> ranks the top documents for the results of different paragraphs based on their scores.
 
 
 ## Entity Ranking
