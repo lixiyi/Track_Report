@@ -34,6 +34,21 @@ News Track
 
 ## Entity Ranking
 #### 1. Signal at TREC 2018 News Track (https://trec.nist.gov/pubs/trec27/papers/signal.N.pdf)
+* Overview :
+	* `Salient Entity Linking (SEL)`:  a unified algorithm for entity linking and salience ranking
+	* Assumption: entity salience ranking would reflect directly the entity ranking, assume a perfect entity linking performance
+* Adaptation SEL:
+	* Efficient Salient Feature: sorted featrue by estimated `Info Gain` and it's avg running time, select top features
+	* Using Sentiment Analysis for Sailence: sentiment polarity around the entities may indicate how salient they are to the topic of the article
+* Three runs:
+	* sel: original SEL (nDCG@5 0.6071)
+	* eff: apply sorted by Info Gain (nDCG@5 0.6084) `less feature seems better`
+	* slst: sentiment-based (nDCG@5 0.5772) 
+* ![#f03c15](https://placehold.it/15/f03c15/000000?text=+) `Dataset`: (`supervised!`) 
+	* `Dexter Entity Salience` dataset (https://github.com/dexter/dexter-datasets/tree/master/entity-saliency)
+	* difference between this dataset and Washington Post dataset: far shorter in length
+
+
 
 #### 2. TREMA-UNH at TREC 2018: Complex Answer Retrieval and News Track (https://trec.nist.gov/pubs/trec27/papers/TREMA-UNH-CAR-N.pdf)
 
