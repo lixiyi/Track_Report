@@ -4,19 +4,19 @@ News Track
 #### 1. htw saar @ TREC 2018 News Track(https://trec.nist.gov/pubs/trec27/papers/htwsaar-N.pdf) 
 * Method 1:(nDCG@5: 0.4150) 
 	* proprocessing: remove same id doc (but different id, same content doc still exits)
-	* indexing: Elasticsearch (all word lowercased but not stemmed)
+	* indexing: `Elasticsearch` (all word lowercased but not stemmed)
 	* tf-idf: top 20 terms as query
 	* date filter: before input doc's date 
 	* re-rank: add date factor
 	* filter same title, author and date doc, as well as some sections
 * Method 2:(nDCG@5: 0.1957) 
-	* Standford CoreNLP: analyze the title, spot entities as query
+	* `Standford CoreNLP`: analyze the title, spot entities as query
 	* other process the same as Method 1
 * Method 3:(nDCG@5: 0.4609) 
 	* preprocessing: heuristic to remove suspected duplicates and some sections
-	* indexing: Apache Lucene
+	* indexing: `Apache Lucene`
 	* two step:
-		* query construction: Text-Rank(key words), CoreNLP(entities) --> rank them(using 4 weighted list)
+		* query construction: `Text-Rank`(key words), `CoreNLP`(entities) --> rank them(using 4 weighted list)
 		* re-rank: meta date(same author, same week likely to be related)
 * Method 4:(nDCG@5: 0.4619) 
 	* indexing and removing duplicates as Method 2
