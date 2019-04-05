@@ -2,6 +2,15 @@ News Track
 =====================
 ## BackGround Linking
 #### 1. htw saar @ TREC 2018 News Track(https://trec.nist.gov/pubs/trec27/papers/htwsaar-N.pdf) 
+	(1) Indexing: Apache Lucene <br/>
+	(2) Proprocessing: remove same id doc (but different id, same content doc still exits) <br/>
+	(3) Method 1: <br/>
+		a. indexing: Elasticsearch (all word lowercased but not stemmed) <br/>
+		b. tf-idf: top 20 terms as query  <br/>
+		c. date filter: before input doc's date <br/> 
+		d. re-rank: add date factor $e^{-\lambda(|t_q - t|)}$ <br/>
+
+
 
 #### 2. Paragraph as Lead - Finding Background Documents for News Articles (https://trec.nist.gov/pubs/trec27/papers/udel_fang-N.pdf)
 
