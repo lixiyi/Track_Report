@@ -59,6 +59,9 @@ To do ...
 
 Core Track
 =====================
+
+Since News Track's dataset is the same to Core Track, so...
+
 ## Paper 2017
 #### 1. ICTNET at TREC 2017 Common Core Track (https://trec.nist.gov/pubs/trec26/papers/ICTNET-CC.pdf)
 To do ...
