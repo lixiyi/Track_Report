@@ -8,8 +8,7 @@ News Track
 		a. indexing: Elasticsearch (all word lowercased but not stemmed)
 		b. tf-idf: top 20 terms as query
 		c. date filter: before input doc's date 
-		d. re-rank: add date factor <img src="http://latex.codecogs.com/gif.latex?e^{-\lambda(|t_q - t|)})"/>
-
+		d. re-rank: add date factor <img src="http://chart.googleapis.com/chart?cht=tx&chl= e^{-\lambda(|t_q - t|)}" style="border:none;">
 
 
 #### 2. Paragraph as Lead - Finding Background Documents for News Articles (https://trec.nist.gov/pubs/trec27/papers/udel_fang-N.pdf)
