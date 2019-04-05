@@ -22,7 +22,10 @@ News Track
 	* indexing and removing duplicates as Method 2
 	* not apply any re-ranking
 	* concatenating the title and doc --> Lucene
-<font color="red"> verbose query seems better </font> 
+
+- ![#f03c15](https://placehold.it/15/f03c15/000000?text=+) `verbose query seems better` 
+
+
 
 #### 2. Paragraph as Lead - Finding Background Documents for News Articles (https://trec.nist.gov/pubs/trec27/papers/udel_fang-N.pdf)
 
