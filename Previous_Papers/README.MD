@@ -8,7 +8,7 @@ News Track
 		a. indexing: Elasticsearch (all word lowercased but not stemmed)
 		b. tf-idf: top 20 terms as query
 		c. date filter: before input doc's date 
-		d. re-rank: add date factor ![](http://latex.codecogs.com/gif.latex?e^{-\\lambda(|t_q - t|)})
+		d. re-rank: add date factor <img src="http://latex.codecogs.com/gif.latex?e^{-\lambda(|t_q - t|)})/>
 
 
 
