@@ -16,8 +16,8 @@ News Track
 	* preprocessing: heuristic to remove suspected duplicates and some sections
 	* indexing: Apache Lucene
 	* two step:
-		query construction: Text-Rank(key words), CoreNLP(entities) --> rank them(using 4 weighted list)
-		re-rank: meta date(same author, same week likely to be related)
+		* query construction: Text-Rank(key words), CoreNLP(entities) --> rank them(using 4 weighted list)
+		* re-rank: meta date(same author, same week likely to be related)
 * Method 4:(nDCG@5: 0.4619) 
 	* indexing and removing duplicates as Method 2
 	* not apply any re-ranking
