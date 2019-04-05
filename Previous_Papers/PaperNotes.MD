@@ -30,8 +30,20 @@ News Track
 
 
 #### 2. Paragraph as Lead - Finding Background Documents for News Articles (https://trec.nist.gov/pubs/trec27/papers/udel_fang-N.pdf)
-To do ...
-
+* Core idea : use paragraphs as leads to and background articles.
+Two steps for Paragraph-Based Background Article Discovery:
+* span the main story into multiple paragraphs
+	* According to the Fox, a news article has its logical breaks.
+	* We use the physical breaks between paragraphs to serve as the logic breaks.
+* how should the paragraphs be used?
+	* We argue that the idea of relatedness between a paragraph and a background article is similar as the relevance concept in IR. 	* We need a way to find keywords, which are the words that are most representative of the meaning of the paragraphs.
+	* We define keywords as the words that maximize the probability of `P(p|w)` in which `p` is a paragraph and `w` is a word in the paragraph.
+	
+	$$ P(p \mid w) = \frac{P(w \mid p) P(p)}{p(w)} \propto P(w \mid p) = \sum_{w_i \in p} P(w \mid w_i)$$
+* result merging
+	* `score-order` ---> use the maximum score a document receives among difierent paragraphs to rank the documents.
+	* `vote-order` ----> use the \voting" of the paragraphs. A document that appears in more paragraphs' results is ranked higher.
+	* `ladder-order` --> ranks the top documents for the results of dierent paragraphs based on their scores.
 
 
 ## Entity Ranking
