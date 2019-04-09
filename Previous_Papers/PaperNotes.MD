@@ -80,5 +80,14 @@ To do ...
 
 
 ## Paper 2018
-To be continue...
+To do...
+
+
+
+CAR Track
+====================
+
+Wikipedia dump & entity ranking.
+
+To do...
 
