@@ -65,7 +65,32 @@ Two steps for Paragraph-Based Background Article Discovery:
 
 
 #### 2. TREMA-UNH at TREC 2018: Complex Answer Retrieval and News Track (https://trec.nist.gov/pubs/trec27/papers/TREMA-UNH-CAR-N.pdf)
-To do ...
+* Overview :
+	* Focus on `passage retrieval`, `entity-aware passage retrieval`, and `entity retrieval` (rank both the passages and the entities) 
+* Low-level Retrival Features:
+	* Indexes:
+		* paragraph index ---> paragraphCorpus
+		* page index ---> allButBenchmark
+		* entity index ---> allButBenchmark
+	* Query Models:  tree-shaped outline of headings ---> form Query
+	* Retrivals Models: BM25, Query likeelihood with Dirichlet smoothing
+	* Expension Models: No, RM3(relevence model), ECM(bag-of-entity-linktargets), ECM-psg(expands the keywords using top 100 entities)
+	* `Process`: BM25 --> bag-of-entity-linktargets --> RM calc P(E|Q) ---> ECM-psg or ECM (two variants)
+	* Toolkits: `RankLib`
+* Joint Entity-Passage Methods:
+	* Some what like `Hits Algorithm`:
+		* Passage retrieval using entity features (sum of entities) 
+		* Entity retrieval using passage features (sum of passages)
+* Support Passage for Entity Rankings:
+	* The entity ranking is augmented with support passages
+* In News Track:
+	* use `a part of` the given news article(`title or first paragraph`) to construct a query
+	* retrive pages depends on entities indexes
+	* use BM25 with a whitelist to retrieve a re-ranking Wiki pages
+	* rank the set of given entities according to their pages
+* `Performance`: the best UNH-ParaBm25 (NDCG@5 :  0.74 ± 0.03) 
+* ![#f03c15](https://placehold.it/15/f03c15/000000?text=+) Core ideas:
+	* use the context in which an entity occurs in a passage as a means of indicating the relevance of an entity with respect to a query
 
 
 
@@ -89,5 +114,5 @@ CAR Track
 
 Wikipedia dump & entity ranking.
 
-To do....
+To do...
 
