@@ -2,15 +2,15 @@ Here are some papers notes:
 
 Contents
 =====================
-- [News Track] (#news-track)
-	- [BackGround Linking] (#BackGround-Linking)
-		- [1. htw saar @ TREC 2018 News Track] (#1-htw-saar--trec-2018-news-trackhttpstrecnistgovpubstrec27papershtwsaar-npdf)
-		- [2. Paragraph as Lead - Finding Background Documents for News Articles] (#2-paragraph-as-lead---finding-background-documents-for-news-articles-httpstrecnistgovpubstrec27papersudel_fang-npdf)
-	- [Entity Ranking] (#Entity-Ranking)
-		- [1. Signal at TREC 2018 News Track] (#1-signal-at-trec-2018-news-track-httpstrecnistgovpubstrec27paperssignalnpdf)
-		- [2. TREMA-UNH at TREC 2018: Complex Answer Retrieval and News Track] (#2-trema-unh-at-trec-2018-complex-answer-retrieval-and-news-track-httpstrecnistgovpubstrec27paperstrema-unh-car-npdf) 
-- [Core Track] (#core-track)
-- [CAR Track] (#car-track)
+- [News Track](#news-track)
+	- [BackGround Linking](#BackGround-Linking)
+		- [1. htw saar @ TREC 2018 News Track](#1-htw-saar--trec-2018-news-trackhttpstrecnistgovpubstrec27papershtwsaar-npdf)
+		- [2. Paragraph as Lead - Finding Background Documents for News Articles](#2-paragraph-as-lead---finding-background-documents-for-news-articles-httpstrecnistgovpubstrec27papersudel_fang-npdf)
+	- [Entity Ranking](#Entity-Ranking)
+		- [1. Signal at TREC 2018 News Track](#1-signal-at-trec-2018-news-track-httpstrecnistgovpubstrec27paperssignalnpdf)
+		- [2. TREMA-UNH at TREC 2018: Complex Answer Retrieval and News Track](#2-trema-unh-at-trec-2018-complex-answer-retrieval-and-news-track-httpstrecnistgovpubstrec27paperstrema-unh-car-npdf) 
+- [Core Track](#core-track)
+- [CAR Track](#car-track)
 
 
 News Track
