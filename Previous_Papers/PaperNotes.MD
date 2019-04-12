@@ -105,7 +105,7 @@ To do ...
 
 
 ## Paper 2018
-To do...
+To do ...
 
 
 
@@ -114,5 +114,12 @@ CAR Track
 
 Wikipedia dump & entity ranking.
 
-To do...
+## Paper 2017
+#### 1. ICTNET at TREC2017 Complex Answer Retrieval Track (https://trec.nist.gov/pubs/trec26/papers/ICTNET-CAR.pdf)
+To do ...
+
+
+## Paper 2018
+To do ...
+
 
