@@ -114,9 +114,18 @@ Since News Track's topics are the same as Core Track, ...
 
 ## Paper 2017
 #### 1. ICTNET at TREC 2017 Common Core Track (https://trec.nist.gov/pubs/trec26/papers/ICTNET-CC.pdf)
-To do ...
-
-
+* Overview: The primary goal of Common Core Track is to get the relative documents from the corpus with the given topics. Given that most of the topics contain less than three word and some include even one word, the author has an exploration on the topics. Then they select the apache Solr as their retrieve frame in order to improve the effectiveness on the automatic query expansion.
+* Query Preprocess
+	* train a model to convert words into vectors by CBOW
+	* extend the query words following an incremental procedure based on word embedding
+		* Pre-retrieval kNN based approach: select the nearest `k` neighbors of given query word set by computing the
+mean cosine similarity between each candidate word and all the query words.
+		* Pre-retrieval incremental kNN based approach: repeat the process for ݈`l` times ----> prune the `K` least similar neighbors in the new list to obtain list and add the first word to the expansion word set. 
+	* use the TextRank algorithm to obtain the keywords from the description of the topic
+* Evaluation
+	* make six submissions. In the second submission, query word is manually expanded. While in other submissions the expansion is automatic.
+	* Best result ----> MAP 0.5377, NDCG 0.7699, P@10T 0.9160
+	* Median result --> MAP 0.2280, NDCG 0.6787, P@10T 0.5480
 ## Paper 2018
 To do ...
 
