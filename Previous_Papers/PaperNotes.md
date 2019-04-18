@@ -116,12 +116,12 @@ Since News Track's topics are the same as Core Track, ...
 #### 1. ICTNET at TREC 2017 Common Core Track (https://trec.nist.gov/pubs/trec26/papers/ICTNET-CC.pdf)
 * Overview: The primary goal of Common Core Track is to get the relative documents from the corpus with the given topics. Given that most of the topics contain less than three word and some include even one word, the author has an exploration on the topics. Then they select the apache Solr as their retrieve frame in order to improve the effectiveness on the automatic query expansion.
 * Query Preprocess
-	* train a model to convert words into vectors by CBOW
-	* extend the query words following an incremental procedure based on word embedding
+	* train a model to convert words into vectors by CBOW.
+	* extend the query words following an incremental procedure based on word embedding.
 		* Pre-retrieval kNN based approach: select the nearest `k` neighbors of given query word set by computing the
 mean cosine similarity between each candidate word and all the query words.
 		* Pre-retrieval incremental kNN based approach: repeat the process for ݈`l` times ----> prune the `K` least similar neighbors in the new list to obtain list and add the first word to the expansion word set. 
-	* use the TextRank algorithm to obtain the keywords from the description of the topic
+	* use the TextRank algorithm to obtain the keywords from the description of the topic.
 * Evaluation
 	* make six submissions. In the second submission, query word is manually expanded. While in other submissions the expansion is automatic.
 	* Best result ----> MAP 0.5377, NDCG 0.7699, P@10T 0.9160
@@ -138,9 +138,20 @@ Wikipedia dump & entity ranking.
 
 ## Paper 2017
 #### 1. ICTNET at TREC2017 Complex Answer Retrieval Track (https://trec.nist.gov/pubs/trec26/papers/ICTNET-CAR.pdf)
-To do ...
-
-
+* Overview:  Complex Answer Retrieval Track focuses on developing systems that are capable of answering complex information needs by collating relevant information from an entire corpus.
+* Implementation pricinple
+	* preprocess the query ----> remove the identifier `/`, don't remove stop words.
+	* use `Solr` to set up an inverted index on all the documents in the test set to speed up the query.
+	* use `BM25` model to calculate the score for all the documents and sorted them.
+* Use `Solr` to retrieve the document
+	* split the data into many copies, each with one thousand text data.
+	* set up inverted index on each copies.
+	*  use http to retrieve documents and we will receive an XML/JSON response which contained 1000 results for a query.
+* Analysis:  separate different documents into groups by their corresponding queries and then calculate mean, minimum, maximum, average and standard deviation respectively, and we discover:
+	* for each query, the mean of relevance scores is very different, ranging from 12.356 to 102.254.
+	* the relevance scores of documents with the length of the queries is positively correlated.
+	* for each query, the variance of the relevance scores is very small.75% are less than 3.474 and only 25% range from 3.474 to 13.784.
+	* for each query, the mean of relevance scores and the median of relevance scores is very close, indicating that the distribution of relevance scores are relatively uniform.
 ## Paper 2018
 To do ...
 
