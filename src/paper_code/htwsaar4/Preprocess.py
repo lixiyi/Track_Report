@@ -5,7 +5,8 @@ import re
 from elasticsearch import Elasticsearch
 
 # file path
-DataPath = "D:/Download/Projects/TREC2019/WashingtonPost.v2/data/"
+# DataPath = "D:/Download/Projects/TREC2019/WashingtonPost.v2/data/"
+DataPath = "E:/Track/WashingtonPost.v2/data/"
 
 WashingtonPost = "TREC_Washington_Post_collection.v2.jl"
 

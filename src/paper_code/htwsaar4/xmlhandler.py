@@ -57,6 +57,7 @@ if __name__ == "__main__":
     Handler = XmlHandler()
     parser.setContentHandler(Handler)
 
-    parser.parse("D:/Download/Projects/TREC2019/WashingtonPost.v2/data/newsir18-topics.txt")
+    # parser.parse("D:/Download/Projects/TREC2019/WashingtonPost.v2/data/newsir18-topics.txt")
+    parser.parse("E:/Track/WashingtonPost.v2/data/newsir18-entities.txt")
 
 
