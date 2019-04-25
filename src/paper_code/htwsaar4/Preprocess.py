@@ -16,9 +16,7 @@ bqrels = "bqrels.exp-gains.txt"
 entities = "newsir18-entities.txt"
 eqrels = "eqrels.txt"
 
-
-def process_topics(filename):
-    return
+es = Elasticsearch()
 
 
 def process_washington_post(filename):
@@ -41,13 +39,30 @@ def process_washington_post(filename):
                     text += content.lower()
             obj['text'] = text
             doc = json.dumps(obj)
-            cnt += 1
+            # insert data
+			res = es.create(index='news', body=doc)
+			print(cnt)
+			cnt += 1
 
 
 # put all the news into elasticsearch
 def init_es():
-    es = Elasticsearch()
-    # to be continue
+    # create index
+    mapping = {
+        'properties': {
+	 		'text': {
+				'type': 'text'
+			}
+			'docid': {
+				'type': 'keyword'
+			}
+		}
+    }
+    es.indices.delete(index='news', ignore=[400, 404])
+    es.indices.create(index='news', ignore=400)
+    result = es.indices.put_mapping(index='news', body=mapping)
+    # add all the file into elasticsearch
     process_washington_post(DataPath + WashingtonPost)
 
 
+init_es()
