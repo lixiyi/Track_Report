@@ -40,7 +40,7 @@ def process_washington_post(filename):
             obj['text'] = text
             doc = json.dumps(obj)
             # insert data
-            res = es.create(index='news', body=doc)
+            res = es.index(index='news', id=cnt, body=doc)
             print(cnt)
             cnt += 1
 
@@ -53,7 +53,28 @@ def init_es():
             'text': {
                 'type': 'text'
             },
-            'docid': {
+            'id': {
+                'type': 'keyword'
+            },
+            'article_url': {
+                'type': 'keyword'
+            },
+            'title': {
+                'type': 'text'
+            },
+            'author': {
+                'type': 'keyword'
+            },
+            'published_date': {
+                'type': 'keyword'
+            },
+            'contents': {
+                'type': 'keyword'
+            },
+            'type': {
+                'type': 'keyword'
+            },
+            'source': {
                 'type': 'keyword'
             }
         }
