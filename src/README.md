@@ -105,8 +105,11 @@ eg:
 
 * the `iter` and `rank` is no use, set 0 is all right
 
+
+## Eval command
+
 ```Bash
-./trec_eval -h
+./trec_eval [-q] [-m measure] qrel_file results_file
 ```
 
 ## Reference
