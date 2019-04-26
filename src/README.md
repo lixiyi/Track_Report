@@ -75,9 +75,10 @@ eg:
 |---|---|---|---|---|---|---
 | qid | iter|  docno       | rank |  sim  |  run_id |
 
-| 表格      | 第一列     | 第二列     |
+| 030      | Q0     | ZF08-175-870     |
 | ---------- | :-----------:  | :-----------: |
-| 第一行     | 第一列     | 第二列     |
+| qid     | iter     | docno     |
+
 *the `iter` and `rank` is no use, set 0 is all right
 
 ## Reference
