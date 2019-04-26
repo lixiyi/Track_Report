@@ -62,7 +62,9 @@ Usage of trec_eval.9.0
 ```
 
 ## Lines of offical results file
-|qid | iter | docno | rel |
+
+| qid      | iter     | docno     | rel     |
+
 * the `iter` is no use, set 0 is all right
 
 eg:
@@ -72,9 +74,6 @@ eg:
 
 ## Lines of your results file
 
-| 030 | Q0 | ZF08-175-870 | 0    | 4238 | prise1 |
-|---|---|---|---|---|---|---
-| qid | iter| docno       | rank | sim  | run_id |
 
 | 030      | Q0     | ZF08-175-870     | 0     | 4238     | prise1     |
 | ---------- | :-----------:  | :-----------: | :-----------: | :-----------: | :-----------: |
