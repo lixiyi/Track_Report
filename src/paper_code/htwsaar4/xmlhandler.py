@@ -35,13 +35,13 @@ class XmlHandler(xml.sax.ContentHandler):
             self.entities.append(self.emp)
             print(self.emp)
             self.emp = {}
-		elif tag == "topic":
-			mp = {}
-			mp['num'] = self.num
-			mp['docid'] = self.docid
-			mp['url'] = self.url
-			mp['entities'] = self.entities
-			topics.append(mp)
+        elif tag == "topic":
+            mp = {}
+            mp['num'] = self.num
+            mp['docid'] = self.docid
+            mp['url'] = self.url
+            mp['entities'] = self.entities
+            topics.append(mp)
         self.tag = ""
 
     # Call when a character is read
@@ -56,7 +56,7 @@ class XmlHandler(xml.sax.ContentHandler):
             self.emp[self.tag] = content
 
 
-def getTopics():
+def get_topics():
     # create an XMLReader
     parser = xml.sax.make_parser()
     # turn off namepsaces
@@ -68,10 +68,8 @@ def getTopics():
 
     # parser.parse("D:/Download/Projects/TREC2019/WashingtonPost.v2/data/newsir18-topics.txt")
     parser.parse("E:/Track/WashingtonPost.v2/data/newsir18-entities.txt")
-	
-	return topics
 
-
+    return topics
 
 
 if __name__ == "__main__":

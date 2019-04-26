@@ -3,7 +3,7 @@
 import json
 import re
 from elasticsearch import Elasticsearch
-from xmlhandler import getTopics
+from xmlhandler import get_topics
 
 # file path
 # DataPath = "D:/Download/Projects/TREC2019/WashingtonPost.v2/data/"

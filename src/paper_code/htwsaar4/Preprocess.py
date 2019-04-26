@@ -40,9 +40,9 @@ def process_washington_post(filename):
             obj['text'] = text
             doc = json.dumps(obj)
             # insert data
-			res = es.create(index='news', body=doc)
-			print(cnt)
-			cnt += 1
+            res = es.create(index='news', body=doc)
+            print(cnt)
+            cnt += 1
 
 
 # put all the news into elasticsearch
@@ -50,13 +50,13 @@ def init_es():
     # create index
     mapping = {
         'properties': {
-	 		'text': {
-				'type': 'text'
-			}
-			'docid': {
-				'type': 'keyword'
-			}
-		}
+            'text': {
+                'type': 'text'
+            },
+            'docid': {
+                'type': 'keyword'
+            }
+        }
     }
     es.indices.delete(index='news', ignore=[400, 404])
     es.indices.create(index='news', ignore=400)
