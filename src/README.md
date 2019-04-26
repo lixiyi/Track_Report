@@ -67,9 +67,10 @@ eg:
 
 
 ## Lines of your results file
-* 030  Q0  ZF08-175-870  0   4238   prise1
-* qid iter   docno      rank  sim   run_id
-* (the `iter` and `rank` is no use, set 0 is all right)
+* | 030 | Q0 | ZF08-175-870 | 0 |  4238 |  prise1 |
+|---|---|---|---|---|---|---
+* | qid | iter |  docno   |   rank | sim |  run_id |
+* the `iter` and `rank` is no use, set 0 is all right
 
 ## Reference
 http://www.rafaelglater.com/en/post/learn-how-to-use-trec_eval-to-evaluate-your-information-retrieval-system
