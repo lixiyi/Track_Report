@@ -90,12 +90,9 @@ Usage of trec_eval.9.0
 | qid      | iter     | docno     | rel     |
 
 * the `iter` is no use, set 0 is all right
-* example
+* offical results file
     * [background linking : bqrels.exp-gains.txt](https://github.com/lixiyi/Track_Report/blob/lxy/src/examples/bqrels.exp-gains.txt)
     * [entity ranking : eqrels.txt](https://github.com/lixiyi/Track_Report/blob/lxy/src/examples/eqrels.txt)
-eg:
-* bqrels.exp-gains.txt is the offical results file for background linking
-* eqrels.txt is the offical results file for entity ranking
 
 
 ## Lines of your results file
@@ -117,7 +114,7 @@ eg:
 ```
 * eval results example
     * [background linking : bscore.txt](https://github.com/lixiyi/Track_Report/blob/lxy/src/examples/bscore.txt)
-    * [entity ranking : escore.txt](https://github.com/lixiyi/Track_Report/blob/lxy/src/examples/escore.txt))
+    * [entity ranking : escore.txt](https://github.com/lixiyi/Track_Report/blob/lxy/src/examples/escore.txt)
 
 ## Reference
 http://www.rafaelglater.com/en/post/learn-how-to-use-trec_eval-to-evaluate-your-information-retrieval-system
