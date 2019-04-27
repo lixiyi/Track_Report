@@ -5,8 +5,8 @@ import re
 from elasticsearch import Elasticsearch
 
 # file path
-# DataPath = "D:/Download/Projects/TREC2019/WashingtonPost.v2/data/"
-DataPath = "E:/Track/WashingtonPost.v2/data/"
+DataPath = "D:/Download/Projects/TREC2019/WashingtonPost.v2/data/"
+# DataPath = "E:/Track/WashingtonPost.v2/data/"
 
 WashingtonPost = "TREC_Washington_Post_collection.v2.jl"
 
@@ -23,8 +23,8 @@ def process_washington_post(filename):
     with open(filename, 'r', encoding='utf-8') as f:
         cnt = 0
         for line in f:
-            if cnt == 1:
-                break
+            # if cnt == 1:
+            #     break
             obj = json.loads(line)
             # for key in obj.keys():
             #     print(key, ':', obj[key])
@@ -32,12 +32,13 @@ def process_washington_post(filename):
             contents = obj['contents']
             text = ""
             for li in contents:
-                if li['type'] == 'sanitized_html':
+                if 'type' in li and li['type'] == 'sanitized_html':
                     content = li['content']
                     # remove html tags, lowercase
                     content = re.sub(r'<.*?>', '', content)
                     text += content.lower()
             obj['text'] = text
+            del obj['contents']
             doc = json.dumps(obj)
             # insert data
             res = es.index(index='news', id=cnt, body=doc)
@@ -68,9 +69,9 @@ def init_es():
             'published_date': {
                 'type': 'keyword'
             },
-            'contents': {
-                'type': 'keyword'
-            },
+            # 'contents': {
+            #     'type': 'keyword'
+            # },
             'type': {
                 'type': 'keyword'
             },

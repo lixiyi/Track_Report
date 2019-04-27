@@ -3,11 +3,11 @@
 import json
 import re
 from elasticsearch import Elasticsearch
-from xmlhandler import get_topics
+import src.paper_code.htwsaar4.xmlhandler as xh
 
 # file path
-# DataPath = "D:/Download/Projects/TREC2019/WashingtonPost.v2/data/"
-DataPath = "E:/Track/WashingtonPost.v2/data/"
+DataPath = "D:/Download/Projects/TREC2019/WashingtonPost.v2/data/"
+# DataPath = "E:/Track/WashingtonPost.v2/data/"
 
 WashingtonPost = "TREC_Washington_Post_collection.v2.jl"
 
@@ -21,4 +21,9 @@ es = Elasticsearch()
 
 
 def process_topics():
+	tps = xh.get_topics(DataPath + topics)
+	for mp in tps:
+		print(mp['docid'])
 	return
+
+process_topics()

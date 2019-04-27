@@ -35,7 +35,7 @@ class XmlHandler(xml.sax.ContentHandler):
             self.entities.append(self.emp)
             print(self.emp)
             self.emp = {}
-        elif tag == "topic":
+        elif tag == "top":
             mp = {}
             mp['num'] = self.num
             mp['docid'] = self.docid
@@ -56,7 +56,7 @@ class XmlHandler(xml.sax.ContentHandler):
             self.emp[self.tag] = content
 
 
-def get_topics():
+def get_topics(filename):
     # create an XMLReader
     parser = xml.sax.make_parser()
     # turn off namepsaces
@@ -66,8 +66,8 @@ def get_topics():
     Handler = XmlHandler()
     parser.setContentHandler(Handler)
 
-    # parser.parse("D:/Download/Projects/TREC2019/WashingtonPost.v2/data/newsir18-topics.txt")
-    parser.parse("E:/Track/WashingtonPost.v2/data/newsir18-entities.txt")
+    parser.parse(filename)
+    # parser.parse(filename)
 
     return topics
 
