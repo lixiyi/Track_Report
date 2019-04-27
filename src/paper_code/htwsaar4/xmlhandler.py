@@ -19,21 +19,26 @@ class XmlHandler(xml.sax.ContentHandler):
     def startElement(self, tag, attributes):
         self.tag = tag
         if self.tag == "top":
-            print("*****Topic*****")
+            1
+            # print("*****Topic*****")
         elif self.tag == "entities":
-            print("=====Entities=====")
+            1
+            # print("=====Entities=====")
 
     # Call when an elements ends
     def endElement(self, tag):
         if self.tag == "num":
-            print("num:", self.num)
+            1
+            # print("num:", self.num)
         elif self.tag == "docid":
-            print("docid:", self.docid)
+            1
+            # print("docid:", self.docid)
         elif self.tag == "url":
-            print("url:", self.url)
+            1
+            # print("url:", self.url)
         elif tag == "entity":
             self.entities.append(self.emp)
-            print(self.emp)
+            # print(self.emp)
             self.emp = {}
         elif tag == "top":
             mp = {}

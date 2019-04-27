@@ -1,20 +1,16 @@
 #!/usr/bin/env python3
 
+import os
 import json
 import re
 from elasticsearch import Elasticsearch
 
-# file path
-DataPath = "D:/Download/Projects/TREC2019/WashingtonPost.v2/data/"
-# DataPath = "E:/Track/WashingtonPost.v2/data/"
-
-WashingtonPost = "TREC_Washington_Post_collection.v2.jl"
-
-topics = "newsir18-topics.txt"
-bqrels = "bqrels.exp-gains.txt"
-
-entities = "newsir18-entities.txt"
-eqrels = "eqrels.txt"
+# get file path conf
+path_mp = {}
+with open(os.getcwd()+'/../../path.cfg', 'r', encoding='utf-8') as f:
+    for line in f:
+        li = line[:-1].split('=')
+        path_mp[li[0]] = li[1]
 
 es = Elasticsearch()
 
@@ -32,7 +28,7 @@ def process_washington_post(filename):
             contents = obj['contents']
             text = ""
             for li in contents:
-                if 'type' in li and li['type'] == 'sanitized_html':
+                if type(li).__name__ == 'dict' and 'type' in li and li['type'] == 'sanitized_html':
                     content = li['content']
                     # remove html tags, lowercase
                     content = re.sub(r'<.*?>', '', content)
@@ -84,7 +80,7 @@ def init_es():
     es.indices.create(index='news', ignore=400)
     result = es.indices.put_mapping(index='news', body=mapping)
     # add all the file into elasticsearch
-    process_washington_post(DataPath + WashingtonPost)
+    process_washington_post(path_mp['DataPath'] + path_mp['WashingtonPost'])
 
 
 init_es()

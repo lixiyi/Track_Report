@@ -4,7 +4,6 @@ import random
 import argparse
 
 
-
 def gen_result(infile, outfile):
 	with open(infile, 'r', encoding='utf-8') as f:
 		with open(outfile, 'w', encoding='utf-8') as f1:
