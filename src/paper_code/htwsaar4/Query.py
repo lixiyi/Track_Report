@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import os
+import jieba
 import json
 import re
 import random
@@ -32,18 +33,20 @@ def test_backgound_linking():
 				}
 			}
 			res = es.search(index='news', body=dsl)
-			print(res)
-			# doc = res['hits']['hits'][0]['_source']
+			# print(res)
+			doc = res['hits']['hits'][0]['_source']
+			# print(doc)
 			# construct query by title+text
+			# q = jieba.cut_for_search(doc['text'])
 			dsl = {
 				'query': {
-					'match_all': {
-						'query': ['title', 'text'],
-						'field': ['title', 'text']
+					'match': {
+						'text': doc['text'],
 					}
 				}
 			}
-			# res = es.search(index='news', body=dsl)
+			res = es.search(index='news', body=dsl)
+			print(res)
 			# generate result.test file
 			# out = []
 			# out.append(li[0])
