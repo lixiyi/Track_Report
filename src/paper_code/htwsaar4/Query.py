@@ -5,6 +5,7 @@ import jieba
 import json
 import re
 import random
+import numpy as np
 from elasticsearch import Elasticsearch
 import src.paper_code.htwsaar4.xmlhandler as xh
 
@@ -18,12 +19,19 @@ with open(os.getcwd()+'/../../path.cfg', 'r', encoding='utf-8') as f:
 es = Elasticsearch()
 
 topics = xh.get_topics(path_mp['DataPath'] + path_mp['topics'])
+# get stop words list
+stwlist = [line.strip() for line in open('stopwords.txt', encoding='utf-8').readlines()]
+# doc length 595037
+D = 595037
 
 
 def test_backgound_linking():
 	with open('bresults.test', 'w', encoding='utf-8') as f1:
+		num = 1
 		for mp in topics:
-			print(mp['docid'])
+			print(mp['num'].split(':')[1].strip())
+			print(num, mp['docid'])
+			num += 1
 			# search by docid to get the query
 			dsl = {
 				'query': {
@@ -35,28 +43,87 @@ def test_backgound_linking():
 			res = es.search(index='news', body=dsl)
 			# print(res)
 			doc = res['hits']['hits'][0]['_source']
+			dt = doc['published_date']
+			docid = doc['id']
 			# print(doc)
-			# construct query by title+text
-			# q = jieba.cut_for_search(doc['text'])
-			dsl = {
-				'query': {
-					'match': {
-						'text': doc['text'],
+			# remove stop words
+			text = re.sub('[’!"#$%&\'()*+,-./:;<=>?@[\\]^_`{|}~]+', '', doc['text'])
+			words = "#".join(jieba.cut(text)).split('#')
+			q = {}
+			tf = {}
+			for w in words:
+				if w != "" and w != ' ' and w not in stwlist:
+					if w in tf:
+						tf[w] += 1.0
+					else:
+						tf[w] = 1.0
+					# calc idf
+					dsl = {
+						"size": 0,
+						'query': {
+							'match_phrase': {
+								'text': w
+							},
+						},
+						"aggs": {
+							"idf": {
+								"terms": {
+									"field": "source"
+								}
+							}
+						}
+
 					}
+					res = es.search(index='news', body=dsl)
+					res = res['aggregations']['idf']['buckets']
+					idf = 0.0
+					for dc in res:
+						idf += dc['doc_count']
+					if idf > 0.0:
+						q[w] = np.log(D / idf)
+					else:
+						q[w] = 0.0
+			for w in q.keys():
+				q[w] *= tf[w]
+			q = sorted(q.items(), key=lambda x: x[1], reverse=True)
+			query = ""
+			sz = min(20, len(q))
+			cnt = 0
+			for w in q:
+				if cnt >= sz:
+					break
+				query += ' ' + w[0]
+				cnt += 1
+			# query the doc
+			dsl = {
+				"query": {
+					'bool': {
+						'must': {
+							'match': {'text': query}
+						},
+						"must_not": {"match": {"id": docid}},
+						'filter': {
+							"range": {"published_date": {"lt": dt}}
+						}
+					},
 				}
 			}
 			res = es.search(index='news', body=dsl)
-			print(res)
-			# generate result.test file
-			# out = []
-			# out.append(li[0])
-			# out.append('Q0')
-			# out.append(li[2])
-			# out.append(str(random.randint(1, 10)))
-			# out.append(str(random.random()))
-			# out.append('ICTNET')
-			# ans = "\t".join(out) + "\n"
-			# f1.write(ans)
+			res = res['hits']['hits']
+			# output result.test file
+			print('result:', len(res))
+			cnt = 1
+			for ri in res:
+				out = []
+				out.append(mp['num'].split(':')[1].strip())
+				out.append('Q0')
+				out.append(ri['_source']['id'])
+				out.append(str(cnt))
+				out.append(str(ri['_score']))
+				out.append('ICTNET')
+				ans = "\t".join(out) + "\n"
+				f1.write(ans)
+				cnt += 1
 	return
 
 
