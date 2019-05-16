@@ -10,9 +10,9 @@ Summary
 
 
 ## Introduce Knowledge Graph
-```
+
 ![image 404](img/kg_train.png)
-```
+
 * Training in turn 
 	* Deep Knowledge-aware Network(DKN)
 * Joint training
