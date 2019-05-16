@@ -11,7 +11,7 @@ Summary
 
 ## Introduce Knowledge Graph
 ```
-img/kg_train.png
+![image 404](img/kg_train.png)
 ```
 * Training in turn 
 	* Deep Knowledge-aware Network(DKN)
