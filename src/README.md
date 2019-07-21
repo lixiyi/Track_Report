@@ -116,6 +116,11 @@ Usage of trec_eval.9.0
     * [background linking : bscore.txt](https://github.com/lixiyi/Track_Report/blob/lxy/src/examples/bscore.txt)
     * [entity ranking : escore.txt](https://github.com/lixiyi/Track_Report/blob/lxy/src/examples/escore.txt)
 
+* Metrics
+    * nDCG@5
+    * where the gain value is 2^(r-1), relevance levels are [0, 2, 4, 8, 16]
+    * Evaluation scores for TREC runs were computed using `trec_eval -q -M1000 qrels run'
+
 ## Reference
 http://www.rafaelglater.com/en/post/learn-how-to-use-trec_eval-to-evaluate-your-information-retrieval-system
 
