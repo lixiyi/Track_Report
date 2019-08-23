@@ -1,2 +1,2 @@
 # Track_Report
-(test)Paper reading notes.
+Paper reading notes.
